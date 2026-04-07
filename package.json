@@ -1,0 +1,30 @@
+{
+  "name": "gems-monorepo",
+  "private": true,
+  "workspaces": ["apps/*", "packages/contracts", "services/*"],
+  "overrides": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1"
+  },
+  "scripts": {
+    "dev": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "dev:signaling": "npm run dev -w signaling",
+    "dev:gate": "npm run dev -w gate",
+    "dev:api": "npm run dev -w api",
+    "dev:full": "npx --yes concurrently -k -n web,api,gate,ws -c blue,green,magenta,yellow \"npm run dev -w web\" \"npm run dev -w api\" \"npm run dev -w gate\" \"npm run dev -w signaling\"",
+    "forge:build": "cd packages/contracts && forge build",
+    "forge:test": "cd packages/contracts && forge test",
+    "verify:release": "npm run forge:test && npm run build -w web && npm run build -w api",
+    "test:e2e": "npm run build -w web && playwright test",
+    "verify:grant": "npm run verify:release && npm run test -w api && playwright test",
+    "verify:all": "npm run verify:release && playwright install --with-deps chromium && playwright test",
+    "forge:deploy:sepolia": "cd packages/contracts && sh -c 'set -a; [ -f ../../.env ] && . ../../.env; set +a; forge script script/Deploy.s.sol:Deploy --rpc-url base_sepolia --broadcast -vvvv'",
+    "forge:deploy:sepolia:verify": "cd packages/contracts && sh -c 'set -a; [ -f ../../.env ] && . ../../.env; set +a; forge script script/Deploy.s.sol:Deploy --rpc-url base_sepolia --broadcast --verify -vvvv'",
+    "forge:deploy:agent-market": "cd packages/contracts && sh -c 'set -a; [ -f ../../.env ] && . ../../.env; set +a; forge script script/DeployAgentSkillMarket.s.sol:DeployAgentSkillMarket --rpc-url base_sepolia --broadcast -vvvv'",
+    "forge:deploy:agent-market:verify": "cd packages/contracts && sh -c 'set -a; [ -f ../../.env ] && . ../../.env; set +a; forge script script/DeployAgentSkillMarket.s.sol:DeployAgentSkillMarket --rpc-url base_sepolia --broadcast --verify -vvvv'"
+  }
+}

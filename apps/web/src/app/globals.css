@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Syne:wght@500;600;700;800&display=swap");
+@import "../styles/design-tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Syne", system-ui, sans-serif;
+  }
+
+  /* Glassmorphism + neon rim */
+  .lux-glass {
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, rgba(17, 17, 17, 0.92) 0%, rgba(10, 10, 10, 0.75) 100%);
+    border: 1px solid rgba(255, 43, 85, 0.14);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 32px rgba(var(--lux-rgb), 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .lux-glass-hover {
+    @apply lux-glass transition-all duration-300;
+  }
+  .lux-glass-hover:hover {
+    border-color: rgba(255, 43, 85, 0.38);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 44px rgba(var(--lux-rgb), 0.18);
+    transform: translateY(-3px);
+  }
+
+  .surface-card {
+    @apply lux-glass;
+  }
+  .surface-card-hover {
+    @apply lux-glass-hover;
+  }
+  .surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+    @apply rounded-2xl border border-[rgba(255,43,85,0.12)] backdrop-blur-md;
+    box-shadow: var(--lux-shadow-lift);
+  }
+
+  .lux-btn-primary {
+    border-radius: var(--radius-button);
+    background: var(--lux-gradient-cta);
+    color: hsl(var(--primary-foreground));
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(var(--lux-rgb), 0.35), var(--lux-shadow-inset-glass);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      filter 0.25s ease;
+  }
+  .lux-btn-primary:hover {
+    background: var(--lux-gradient-cta-hover);
+    box-shadow: 0 8px 32px rgba(var(--lux-rgb), 0.5), 0 0 40px var(--lux-glow-soft);
+    transform: translateY(-2px);
+  }
+  .lux-btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .badge-subtle {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide;
+    background: rgba(var(--lux-rgb), 0.12);
+    color: hsl(var(--accent-glow));
+    border: 1px solid rgba(var(--lux-rgb), 0.28);
+    box-shadow: 0 0 20px rgba(var(--lux-rgb), 0.1);
+  }
+
+  .live-dot {
+    @apply w-2 h-2 rounded-full animate-pulse;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 12px var(--lux-glow-strong);
+  }
+
+  /* Moving mesh + scan lines */
+  .lux-hero-bg {
+    position: relative;
+    background-color: hsl(var(--background));
+    overflow: hidden;
+  }
+  .lux-hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(var(--lux-rgb), 0.28), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 100% 20%, rgba(196, 0, 47, 0.14), transparent),
+      radial-gradient(ellipse 45% 35% at 0% 60%, rgba(255, 43, 85, 0.1), transparent);
+    animation: lux-mesh-drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .lux-hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 4px
+    );
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .lux-particles {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .lux-particles span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 9999px;
+    background: rgba(255, 43, 85, 0.55);
+    box-shadow: 0 0 10px rgba(255, 43, 85, 0.8);
+    animation: lux-float-particle linear infinite;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(125deg, #ff2b55 0%, #ff6b86 38%, #f0d0d8 100%);
+  }
+
+  .glass-panel {
+    @apply lux-glass rounded-2xl;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[10px] font-semibold uppercase tracking-wide;
+    background: rgba(var(--lux-rgb), 0.1);
+    color: hsl(var(--gold));
+    border: 1px solid rgba(var(--lux-rgb), 0.25);
+    box-shadow: 0 0 18px rgba(var(--lux-rgb), 0.12);
+  }
+
+  .glow-hover {
+    @apply transition-all duration-300;
+  }
+  .glow-hover:hover {
+    box-shadow: 0 0 32px rgba(var(--lux-rgb), 0.28);
+  }
+
+  .lux-nav-shell {
+    @apply border-b border-[rgba(255,43,85,0.12)] bg-[#070707]/85 backdrop-blur-2xl;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(var(--lux-rgb), 0.04);
+  }
+  @supports (backdrop-filter: blur(12px)) {
+    .lux-nav-shell {
+      background-color: rgba(7, 7, 7, 0.72);
+    }
+  }
+
+  .lux-thumb-hover {
+    @apply transition-all duration-500;
+  }
+  .lux-thumb-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 36px rgba(var(--lux-rgb), 0.2);
+  }
+
+  /* Legacy hook */
+  .hero-mesh {
+    @apply lux-hero-bg;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-lux-pulse-glow {
+    animation: lux-pulse-glow 3.5s ease-in-out infinite;
+  }
+  .animate-lux-shimmer {
+    animation: lux-shimmer 2.8s ease-in-out infinite;
+  }
+  .animate-lux-logo {
+    animation: lux-logo-3d 5s ease-in-out infinite;
+  }
+  .animate-confetti {
+    animation: confetti 1s ease-out forwards;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@keyframes lux-mesh-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-4%, 3%) rotate(3deg);
+  }
+}
+
+@keyframes lux-float-particle {
+  0% {
+    transform: translateY(100vh) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes lux-pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 28px rgba(var(--lux-rgb), 0.35);
+  }
+  50% {
+    box-shadow: 0 0 48px rgba(var(--lux-rgb), 0.55);
+  }
+}
+
+@keyframes lux-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes lux-logo-3d {
+  0%,
+  100% {
+    transform: perspective(520px) rotateY(-12deg) rotateX(6deg) translateY(0);
+  }
+  50% {
+    transform: perspective(520px) rotateY(12deg) rotateX(-4deg) translateY(-6px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(720deg) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

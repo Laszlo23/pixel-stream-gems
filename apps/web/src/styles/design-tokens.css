@@ -1,0 +1,84 @@
+/**
+ * Gems — dark luxury / neon crimson design system.
+ * Single source for colors, glows, gradients, radii. Consumed by Tailwind via hsl(var(--*)).
+ */
+:root {
+  /* Reference hex (documentation / theme.ts parity) */
+  --lux-primary-hex: #ff2b55;
+  --lux-secondary-hex: #c4002f;
+  --lux-bg-hex: #070707;
+  --lux-surface-hex: #111111;
+  --lux-highlight-glow: rgba(255, 40, 80, 0.6);
+
+  /* Core surfaces — #070707 bg, #111 surface */
+  --background: 0 0% 2.7%;
+  --foreground: 0 0% 96%;
+  --card: 0 0% 6.7%;
+  --card-foreground: 0 0% 96%;
+  --popover: 0 0% 6.7%;
+  --popover-foreground: 0 0% 96%;
+
+  /* Primary #ff2b55 — Secondary #c4002f */
+  --primary: 347 100% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 348 100% 38%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 52%;
+  --accent: 0 0% 9%;
+  --accent-foreground: 0 0% 94%;
+
+  --destructive: 348 100% 42%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 16%;
+  --input: 0 0% 14%;
+  --ring: 347 100% 58%;
+
+  /* 14px default — buttons 12–18px range */
+  --radius: 0.875rem;
+  --radius-button: 0.875rem;
+  --radius-card: 1rem;
+
+  --surface-elevated: 0 0% 8%;
+
+  /* Neon rose highlights */
+  --accent-glow: 350 100% 62%;
+  --gold: 350 45% 72%;
+
+  --sidebar-background: 0 0% 2.7%;
+  --sidebar-foreground: 0 0% 68%;
+  --sidebar-primary: 347 100% 58%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 8%;
+  --sidebar-accent-foreground: 0 0% 94%;
+  --sidebar-border: 0 0% 14%;
+  --sidebar-ring: 347 100% 58%;
+
+  /* Raw RGB for box-shadows / non-HSL APIs */
+  --lux-rgb: 255, 43, 85;
+  --lux-glow-strong: rgba(255, 40, 80, 0.6);
+  --lux-glow-soft: rgba(255, 43, 85, 0.22);
+  --lux-glow-faint: rgba(255, 43, 85, 0.12);
+
+  /* Gradients */
+  --lux-gradient-cta: linear-gradient(135deg, #ff2b55 0%, #c4002f 48%, #ff4d6d 100%);
+  --lux-gradient-cta-hover: linear-gradient(135deg, #ff3f66 0%, #d40035 50%, #ff6080 100%);
+  --lux-gradient-border: linear-gradient(135deg, rgba(255, 43, 85, 0.85), rgba(196, 0, 47, 0.35), rgba(255, 43, 85, 0.5));
+  --lux-gradient-shine: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 45%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.07) 55%,
+    transparent 100%
+  );
+
+  /* Elevation & glow shadows */
+  --lux-shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.72);
+  --lux-shadow-lift: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 43, 85, 0.12);
+  --lux-shadow-glow: 0 0 36px rgba(var(--lux-rgb), 0.38);
+  --lux-shadow-glow-lg: 0 0 56px rgba(var(--lux-rgb), 0.45);
+  --lux-shadow-inset-glass: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
