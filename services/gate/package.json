@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "fastify": "^5.2.1",
-    "jose": "^5.9.6",
+    "jose": "^6.2.2",
     "viem": "^2.47.6"
   },
   "devDependencies": {

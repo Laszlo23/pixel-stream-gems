@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
+import type { WriteContractParameters } from "viem";
 import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -73,7 +74,7 @@ export function AgentSkillPurchaseCard() {
         functionName: "buySkill",
         args: [AGENT_ID, SKILL_ID],
         value: priceWei,
-      },
+      } as unknown as WriteContractParameters,
       {
         onError: (e) => {
           console.warn(e);

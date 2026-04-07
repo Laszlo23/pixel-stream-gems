@@ -11,15 +11,17 @@ const zgRpc = process.env.NEXT_PUBLIC_ZG_RPC_URL?.trim();
 /**
  * Minimal wagmi config when Privy is bypassed (no NEXT_PUBLIC_PRIVY_APP_ID).
  */
+const baseTransports = {
+  [base.id]: http(baseRpc),
+  [baseSepolia.id]: http(baseSepoliaRpc),
+};
+
 export const devWagmiConfig = createConfig({
   chains: gemsWagmiChains,
   connectors: [injected({ shimDisconnect: true })],
-  transports: {
-    [base.id]: http(baseRpc || undefined),
-    [baseSepolia.id]: http(baseSepoliaRpc || undefined),
-    ...(process.env.NEXT_PUBLIC_0G_CHAIN_ENABLED === "1"
-      ? { [zgGalileoTestnet.id]: http(zgRpc || undefined) }
-      : {}),
-  },
+  transports:
+    process.env.NEXT_PUBLIC_0G_CHAIN_ENABLED === "1"
+      ? { ...baseTransports, [zgGalileoTestnet.id]: http(zgRpc) }
+      : baseTransports,
   ssr: true,
 });

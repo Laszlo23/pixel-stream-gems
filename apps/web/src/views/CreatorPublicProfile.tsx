@@ -82,7 +82,7 @@ const CreatorPublicProfile = () => {
   const posterTall = resolveStreamerPosterSrc(p, "portrait");
 
   return (
-    <div className="min-h-full bg-background hero-mesh">
+    <div className="min-h-full bg-background lux-hero-bg">
       <div className="relative border-b border-border/80 overflow-hidden min-h-[220px] sm:min-h-[280px]">
         <CreatorCardThumbnail
           creatorId={p.id}

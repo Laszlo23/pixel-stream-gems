@@ -15,7 +15,7 @@ const StreamerCard = ({
   avatar,
   previewSlot,
 }: StreamerCardProps) => {
-  const posterSrc = resolveStreamerPosterSrc({ id, previewSlot }, "16x9");
+  const posterSrc = resolveStreamerPosterSrc({ previewSlot }, "16x9");
 
   return (
     <div className="surface-card-hover overflow-hidden rounded-2xl group border border-[rgba(255,43,85,0.12)]">

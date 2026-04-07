@@ -32,7 +32,7 @@ export const PREVIEW_SLOT_EXT: Record<string, "png" | "jpeg" | "jpg"> = {
  * `preview-{slot}-{aspect}.{ext}` (e.g. preview-03-16x9.jpeg, preview-01-portrait.png).
  */
 export function resolveStreamerPosterSrc(
-  s: Pick<StreamerMeta, "id" | "thumbnailImage" | "previewSlot">,
+  s: Pick<StreamerMeta, "thumbnailImage" | "previewSlot">,
   aspect: PreviewAspect,
 ): string {
   if (s.thumbnailImage) return s.thumbnailImage;
@@ -42,7 +42,7 @@ export function resolveStreamerPosterSrc(
 }
 
 /** Ambient loop: `preview-{slot}-loop.mp4` or overrides. */
-export function resolveStreamerAmbientVideoSrc(s: Pick<StreamerMeta, "id" | "ambientVideo" | "previewSlot">): string {
+export function resolveStreamerAmbientVideoSrc(s: Pick<StreamerMeta, "ambientVideo" | "previewSlot">): string {
   if (s.ambientVideo) return s.ambientVideo;
   const slot = (s.previewSlot ?? "01").padStart(2, "0");
   return `/${CREATOR_MEDIA_DIR}/preview-${slot}-loop.mp4`;

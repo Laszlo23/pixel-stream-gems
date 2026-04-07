@@ -21,7 +21,7 @@ const Marketplace = () => {
   const shops = getCreatorsWithFanShops();
 
   return (
-    <div className="min-h-full bg-background hero-mesh">
+    <div className="min-h-full bg-background lux-hero-bg">
       <main className="container mx-auto px-4 pt-6 lg:pt-8 pb-24 lg:pb-16 max-w-4xl space-y-8">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-foreground flex items-center gap-2">

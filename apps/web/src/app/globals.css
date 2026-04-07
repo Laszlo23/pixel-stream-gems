@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Syne:wght@500;600;700;800&display=swap");
 @import "../styles/design-tokens.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 @layer base {
   * {
@@ -30,7 +29,15 @@
   }
 
   .lux-glass-hover {
-    @apply lux-glass transition-all duration-300;
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, rgba(17, 17, 17, 0.92) 0%, rgba(10, 10, 10, 0.75) 100%);
+    border: 1px solid rgba(255, 43, 85, 0.14);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 32px rgba(var(--lux-rgb), 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
   }
   .lux-glass-hover:hover {
     border-color: rgba(255, 43, 85, 0.38);
@@ -39,10 +46,28 @@
   }
 
   .surface-card {
-    @apply lux-glass;
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, rgba(17, 17, 17, 0.92) 0%, rgba(10, 10, 10, 0.75) 100%);
+    border: 1px solid rgba(255, 43, 85, 0.14);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 32px rgba(var(--lux-rgb), 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
   .surface-card-hover {
-    @apply lux-glass-hover;
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, rgba(17, 17, 17, 0.92) 0%, rgba(10, 10, 10, 0.75) 100%);
+    border: 1px solid rgba(255, 43, 85, 0.14);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 32px rgba(var(--lux-rgb), 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  .surface-card-hover:hover {
+    border-color: rgba(255, 43, 85, 0.38);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 44px rgba(var(--lux-rgb), 0.18);
+    transform: translateY(-3px);
   }
   .surface-elevated {
     background-color: hsl(var(--surface-elevated));
@@ -139,7 +164,12 @@
   }
 
   .glass-panel {
-    @apply lux-glass rounded-2xl;
+    border-radius: 1rem;
+    background: linear-gradient(145deg, rgba(17, 17, 17, 0.92) 0%, rgba(10, 10, 10, 0.75) 100%);
+    border: 1px solid rgba(255, 43, 85, 0.14);
+    box-shadow: var(--lux-shadow-soft), var(--lux-shadow-inset-glass), 0 0 32px rgba(var(--lux-rgb), 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .badge-gold {
@@ -175,10 +205,6 @@
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 36px rgba(var(--lux-rgb), 0.2);
   }
 
-  /* Legacy hook */
-  .hero-mesh {
-    @apply lux-hero-bg;
-  }
 }
 
 @layer utilities {

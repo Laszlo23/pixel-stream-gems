@@ -28,7 +28,7 @@ const supporters = [
 
 const Discover = () => {
   return (
-    <div className="min-h-full bg-background hero-mesh">
+    <div className="min-h-full bg-background lux-hero-bg">
       <main className="container mx-auto px-4 pt-6 lg:pt-8 pb-8 lg:pb-12 max-w-[1600px] space-y-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>

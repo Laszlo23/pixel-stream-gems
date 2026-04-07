@@ -54,7 +54,7 @@ const Competitions = () => {
   const creators = creatorPeriod === "week" ? creatorsWeek : creatorsMonth;
 
   return (
-    <div className="min-h-full bg-background hero-mesh">
+    <div className="min-h-full bg-background lux-hero-bg">
       <main className="container mx-auto px-4 pt-6 lg:pt-8 pb-24 lg:pb-20 max-w-5xl space-y-8">
         <Button variant="ghost" size="sm" className="-ml-2 rounded-xl gap-1 text-muted-foreground" asChild>
           <Link href="/">
