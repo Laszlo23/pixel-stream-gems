@@ -31,7 +31,7 @@ export function DiscoverRail({ title, subtitle, actionHref, actionLabel = "See a
         )}
       </div>
       <div className="relative">
-        <div className="flex gap-4 overflow-x-auto pb-2 pt-1 scrollbar-thin snap-x snap-mandatory scroll-pl-4 -mx-1 px-1">
+        <div className="flex gap-4 overflow-x-auto pb-2 pt-1 scrollbar-thin snap-x snap-mandatory scroll-pl-[max(1rem,env(safe-area-inset-left))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
           {children}
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent" />

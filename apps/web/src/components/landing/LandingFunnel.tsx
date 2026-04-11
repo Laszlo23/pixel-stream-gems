@@ -20,6 +20,7 @@ import {
 import { cn } from "@/lib/utils";
 import { DeveloperCredit } from "@/components/DeveloperCredit";
 import { BuiltOnStrip } from "@/components/brand/BuiltOnStrip";
+import { GemsLogoMark } from "@/components/brand/GemsLogoMark";
 
 const PARTICLE_SEED = [12, 28, 44, 58, 72, 18, 65, 38, 88, 22, 50, 91];
 
@@ -113,7 +114,7 @@ export function LandingFunnel() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
             {preview.map((s) => (
               <Link
                 key={s.id}
@@ -285,15 +286,16 @@ export function LandingFunnel() {
       <footer className="relative z-10 border-t border-[rgba(255,43,85,0.15)] bg-[#050505]/90 backdrop-blur-xl py-12 px-4">
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-2">
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/15 shadow-lux"
-              style={{ background: "var(--lux-gradient-cta)" }}
-            >
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+            <GemsLogoMark className="w-9 h-9 rounded-xl border border-white/15 shadow-lux bg-white/5" />
             <span className="font-display font-bold text-lg text-gradient">Gems</span>
           </div>
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+            <Link href="/roadmap" className="hover:text-[hsl(var(--accent-glow))] transition-colors font-medium">
+              Roadmap
+            </Link>
+            <Link href="/technical" className="hover:text-[hsl(var(--accent-glow))] transition-colors font-medium">
+              Technical
+            </Link>
             <Link href="/legal" className="hover:text-[hsl(var(--accent-glow))] transition-colors font-medium">
               Legal
             </Link>

@@ -106,6 +106,7 @@ function LiveRoomContent({ streamer }: { streamer: StreamerMeta }) {
         idle,
         personaName: streamer.name,
         streamCategory: streamer.category,
+        presenterPersona: streamer.presenterPersona,
       });
       if (!lines.length) return;
       const stamp = Date.now();
@@ -120,7 +121,7 @@ function LiveRoomContent({ streamer }: { streamer: StreamerMeta }) {
         })),
       ]);
     },
-    [streamer.id, streamer.name, streamer.category],
+    [streamer.id, streamer.name, streamer.category, streamer.presenterPersona],
   );
 
   useEffect(() => {
@@ -249,7 +250,7 @@ function LiveRoomContent({ streamer }: { streamer: StreamerMeta }) {
       )}
 
       <main className="pt-4 px-4 pb-6">
-        <div className="container mx-auto max-w-[1400px] space-y-4">
+        <div className="app-shell space-y-4">
           <div className="glass-panel flex flex-wrap items-center gap-3 px-4 py-3 text-sm">
             <div className="flex items-center gap-2 rounded-xl bg-background/50 px-3 py-1.5 border border-border/50">
               <Users className="w-4 h-4 text-[hsl(var(--neon-blue))]" />

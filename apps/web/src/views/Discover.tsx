@@ -4,13 +4,19 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DiscoverRail } from "@/components/discover/DiscoverRail";
 import { DiscoverStreamCard } from "@/components/discover/DiscoverStreamCard";
-import { STREAMERS, orderStreamersAvoidAdjacentSamePoster } from "@/data/streamers";
+import {
+  STREAMERS,
+  getFeaturedSeedAgents,
+  orderStreamersAvoidAdjacentSamePoster,
+} from "@/data/streamers";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sparkles, Moon } from "lucide-react";
 
-const byViewers = [...STREAMERS].sort((a, b) => b.viewers - a.viewers);
-const byPool = [...STREAMERS].sort((a, b) => parseFloat(b.poolTvlUsd.replace(/[^0-9.]/g, "")) - parseFloat(a.poolTvlUsd.replace(/[^0-9.]/g, "")));
-const newCreators = orderStreamersAvoidAdjacentSamePoster([...STREAMERS].slice(0, 4), "16x9");
+const seedAgents = orderStreamersAvoidAdjacentSamePoster(getFeaturedSeedAgents(), "16x9");
+const withoutSeeds = STREAMERS.filter((s) => !s.isSeedAgent);
+const byViewers = [...withoutSeeds].sort((a, b) => b.viewers - a.viewers);
+const byPool = [...withoutSeeds].sort((a, b) => parseFloat(b.poolTvlUsd.replace(/[^0-9.]/g, "")) - parseFloat(a.poolTvlUsd.replace(/[^0-9.]/g, "")));
+const newCreators = orderStreamersAvoidAdjacentSamePoster([...withoutSeeds].slice(0, 4), "16x9");
 const liveRightNow = orderStreamersAvoidAdjacentSamePoster(byViewers.slice(0, 8), "16x9");
 const deepSupport = orderStreamersAvoidAdjacentSamePoster(byPool.slice(0, 6), "16x9");
 
@@ -29,7 +35,7 @@ const supporters = [
 const Discover = () => {
   return (
     <div className="min-h-full bg-background lux-hero-bg">
-      <main className="container mx-auto px-4 pt-6 lg:pt-8 pb-8 lg:pb-12 max-w-[1600px] space-y-10">
+      <main className="app-shell px-4 pt-6 lg:pt-8 pb-8 lg:pb-12 space-y-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
             <div className="badge-subtle w-fit mb-3">
@@ -44,9 +50,24 @@ const Discover = () => {
             </p>
           </div>
           <Button asChild className="rounded-xl shrink-0 shadow-[0_0_24px_hsl(var(--primary)/0.3)] transition-all duration-300 hover:shadow-[0_0_32px_hsl(var(--primary)/0.4)]">
-            <Link href="/live/maya">Join the show</Link>
+            <Link href="/live/seed-aurora">Join the show</Link>
           </Button>
         </div>
+
+        {seedAgents.length > 0 && (
+          <DiscoverRail
+            title="Always-on AI hosts"
+            subtitle="Looping video + presenter chat — connect a wallet for full live chat"
+            actionHref="/live/seed-aurora"
+            actionLabel="Watch"
+          >
+            {seedAgents.map((s) => (
+              <div key={s.id} className="snap-start">
+                <DiscoverStreamCard streamer={s} supportLabel="Seed agent" />
+              </div>
+            ))}
+          </DiscoverRail>
+        )}
 
         <DiscoverRail title="Live right now" subtitle="Rooms filling up" actionHref="/leaderboards" actionLabel="Rankings">
           {liveRightNow.map((s) => (

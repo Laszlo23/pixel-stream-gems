@@ -14,6 +14,11 @@
 }
 
 @layer components {
+  /** Centered column aligned with nav / footer on wide viewports */
+  .app-shell {
+    @apply mx-auto w-full max-w-appShell;
+  }
+
   .font-display {
     font-family: "Syne", system-ui, sans-serif;
   }
@@ -140,6 +145,17 @@
     );
     pointer-events: none;
     opacity: 0.5;
+  }
+
+  @media (min-width: 1920px) {
+    .lux-hero-bg::before {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(var(--lux-rgb), 0.28), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 20%, rgba(196, 0, 47, 0.14), transparent),
+        radial-gradient(ellipse 45% 35% at 0% 60%, rgba(255, 43, 85, 0.1), transparent),
+        radial-gradient(ellipse 45% 120% at 0% 50%, rgba(0, 0, 0, 0.42), transparent 55%),
+        radial-gradient(ellipse 45% 120% at 100% 50%, rgba(0, 0, 0, 0.42), transparent 55%);
+    }
   }
 
   .lux-particles {

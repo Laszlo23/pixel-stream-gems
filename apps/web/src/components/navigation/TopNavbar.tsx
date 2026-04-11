@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { LucideIcon } from "lucide-react";
-import { Compass, MessageCircle, Radio, Search, ShoppingBag, Sparkles, Trophy } from "lucide-react";
+import { Compass, MessageCircle, Radio, Search, ShoppingBag, Trophy } from "lucide-react";
+import { GemsLogoMark } from "@/components/brand/GemsLogoMark";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { NavbarAuth } from "@/components/navigation/NavbarAuth";
@@ -29,11 +30,9 @@ export function TopNavbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] h-14 lux-nav-shell">
-      <div className="h-full container mx-auto px-3 sm:px-4 flex items-center gap-2 sm:gap-3">
+      <div className="h-full app-shell px-3 sm:px-4 flex items-center gap-2 sm:gap-3">
         <Link href="/" className="flex items-center gap-2 shrink-0 group mr-1">
-          <div className="w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 border border-[rgba(255,43,85,0.35)] shadow-lux group-hover:shadow-lux-lg group-hover:-translate-y-0.5 bg-gradient-to-br from-[#ff2b55]/90 to-[#c4002f]">
-            <Sparkles className="w-4 h-4 text-white" />
-          </div>
+          <GemsLogoMark className="w-8 h-8 rounded-xl border border-[rgba(255,43,85,0.35)] shadow-lux transition-all duration-300 group-hover:shadow-lux-lg group-hover:-translate-y-0.5 bg-white/5" />
           <span className="font-display font-bold text-base tracking-tight text-gradient hidden sm:inline">Gems</span>
         </Link>
 

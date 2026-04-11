@@ -37,7 +37,7 @@ export function LiveRoomBottomBar({
         className,
       )}
     >
-      <div className="container mx-auto max-w-[1400px] px-3 py-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+      <div className="app-shell px-3 py-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <div className="flex items-center gap-2 flex-wrap">
           <Button variant="default" size="sm" className="rounded-xl gap-2 shrink-0" asChild>
             <Link
